@@ -2,7 +2,7 @@ var express = require('express'),
 	router = express.Router();
 	
 router.get('/', function(req, res) {
-	res.render('index', {title: 'Eindopdracht Rijk'});
+	res.render('index', {title: 'SSS'});
 });
 	
 module.exports = router;

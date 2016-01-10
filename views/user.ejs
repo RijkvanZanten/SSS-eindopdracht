@@ -1,0 +1,34 @@
+<%- include('partials/head.ejs') %>
+
+<dl>
+    <dt>Name:</dt>
+    <dd><%= user.name %></dd>
+    <dt>Handle:</dt>
+    <dd>@<%= user.username %></dd>
+    <dt>Pic filename:</dt>
+    <dd><%= user.profile_pic_path %></dd>
+    <dt>Pic:</dt>
+    <dd><img src="/usermedia/profilepics/<%= user.profile_pic_path %>" /></dd>
+    <dt>Bio:</dt>
+    <dd> 
+        <% 
+            var bio = user.bio;
+            var wordarray = bio.split(' ');
+        
+            for (i = 0; i < wordarray.length; i++) {
+                if(wordarray[i].charAt(0) == '#') { 
+        %>
+                    <a href="/explore/<%= wordarray[i].slice(1) %>"><span style="color: red;"><%= wordarray[i] %></span></a>
+        <%
+                } else {
+        %>
+                    <%= wordarray[i] %>
+        <%
+                    
+                }
+            }
+        %>
+    </dd>
+</dl>
+
+<%- include('partials/foot.ejs') %>
