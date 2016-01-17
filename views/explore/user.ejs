@@ -1,4 +1,4 @@
-<%- include('partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
 
 <dl>
     <dt>Name:</dt>
@@ -18,7 +18,7 @@
             for (i = 0; i < wordarray.length; i++) {
                 if(wordarray[i].charAt(0) == '#') { 
         %>
-                    <a href="/explore/<%= wordarray[i].slice(1) %>"><span style="color: red;"><%= wordarray[i] %></span></a>
+                    <a href="/explore/tag/<%= wordarray[i].slice(1) %>"><span style="color: red;"><%= wordarray[i] %></span></a>
         <%
                 } else {
         %>
@@ -31,4 +31,4 @@
     </dd>
 </dl>
 
-<%- include('partials/foot.ejs') %>
+<%- include('../partials/foot.ejs') %>

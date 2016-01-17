@@ -1,0 +1,9 @@
+<%- include('partials/head'); %>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+	<input type="file" name="photo" />
+	<textarea name="caption" placeholder="caption"></textarea>
+	<input type="submit" />
+</form>
+
+<%- include('partials/foot'); %>

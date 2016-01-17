@@ -1,6 +1,9 @@
 var express = require('express'),
     router  = express.Router();
 
+
+
+// User page
 router.get('/user/:username', function(req, res, next) {
     
     req.getConnection(function(err, connection) {
@@ -21,12 +24,12 @@ router.get('/user/:username', function(req, res, next) {
                 
                 res.locals.title = record[0].name + ' (@' + record[0].username + ') • SSS';
                 res.locals.user = record[0];
-                res.render('user');
+                res.render('explore/user');
                 
             } else {
                 
                 res.send('niet gevonden');
-                
+
             }
 
         });
@@ -37,5 +40,13 @@ router.get('/user/:username', function(req, res, next) {
     res.status(500);
     res.send('hij is stuk');
 });
+
+
+
+// Hashtag search
+router.get('/tag/:hashtag', function(req, res) {
+	res.render('explore/hashtag', {title: "hashtag", hashtag: req.params.hashtag});
+});
+
 
 module.exports = router;

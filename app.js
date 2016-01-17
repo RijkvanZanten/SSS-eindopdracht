@@ -43,10 +43,11 @@ app.use(myConnection(mysql, {
 // --------------------------------------------------------------------
 var indexRouter     = require('./routes/index.js'),
     exploreRouter   = require('./routes/explore.js'),
-    loginRouter     = require('./routes/user/login.js');
+    uploadRouter	= require('./routes/upload.js');
     
 app.use('/', indexRouter);
 app.use('/explore', exploreRouter);
+app.use('/upload', uploadRouter);
 
 
 // Start server
