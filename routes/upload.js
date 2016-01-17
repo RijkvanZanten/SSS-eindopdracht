@@ -41,6 +41,16 @@ function moveFile(req, res, next) {
 	// Check if uploaded image is a png or a jpeg. If not, proceed to errorCallback.
 	if(req.file.mimetype == 'image/png' || req.file.mimetype == 'image/jpeg') {
 	
+		var date = new Date();
+		var year = date.getFullYear().toString();
+		var month = date.getMonth() + 1;
+		
+		if(month < 10) {
+			month = '0' + month.toString();
+		} else {
+			month = month.toString();
+		}
+		
 		// Check if image year directory exists
 		fs.stat(path.join('public/usermedia/photos', year), function(error, stat) {
 			
