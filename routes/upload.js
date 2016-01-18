@@ -8,12 +8,14 @@ var express = require('express'),
 
 
 // ------------------------------------------------------------
-// GET ~ 192.168.56.101:3000/upload
+// GET
 // Show the upload form to users 
 // ------------------------------------------------------------
+
 router.get('/', function(req, res) {
-	res.render('upload', {title: 'Upload photo'});
+	res.render('upload', {title: 'Upload photo', bodyclass: 'uploadphoto'});
 });
+
 
 
 // ------------------------------------------------------------
@@ -23,6 +25,7 @@ router.get('/', function(req, res) {
 
 // Middleware functions
 // ------------------------------------------------------------
+
 var uploadFile = upload.single('photo');
 
 // Move file to correct subdirectory ordered by date

@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 
 // Bodyparser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Sessions
 app.use(session({
@@ -39,15 +39,21 @@ app.use(myConnection(mysql, {
 }, 'single'));
 
 
+
 // Routes & Routers
 // --------------------------------------------------------------------
 var indexRouter     = require('./routes/index.js'),
     exploreRouter   = require('./routes/explore.js'),
-    uploadRouter	= require('./routes/upload.js');
+    uploadRouter	= require('./routes/upload.js'),
+    userRouter		= require('./routes/user.js'),
+    ajaxRouter		= require('./routes/ajax.js');
     
 app.use('/', indexRouter);
 app.use('/explore', exploreRouter);
 app.use('/upload', uploadRouter);
+app.use('/user', userRouter);
+app.use('/ajax', ajaxRouter);
+
 
 
 // Start server

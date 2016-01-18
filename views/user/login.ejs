@@ -1,0 +1,12 @@
+<%- include('../partials/head') %>
+	<main>
+		<div>
+			<form action="/login" method="POST">
+				<input type="text" name="username" placeholder="Gebruikersnaam" />
+				<input type="password" name="password" placeholder="Wachtwoord" />
+				<input type="submit" value="Log in" />
+			</form>
+			<p><a href="/user/create">Maak een account</a></p>
+		</div>
+	</main>
+<%- include('../partials/foot') %>

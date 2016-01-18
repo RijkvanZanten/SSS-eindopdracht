@@ -23,6 +23,7 @@ router.get('/user/:username', function(req, res, next) {
             if(record.length) {
                 
                 res.locals.title = record[0].name + ' (@' + record[0].username + ') • SSS';
+                res.locals.bodyclass = 'explore user';
                 res.locals.user = record[0];
                 res.render('explore/user');
                 
@@ -45,7 +46,7 @@ router.get('/user/:username', function(req, res, next) {
 
 // Hashtag search
 router.get('/tag/:hashtag', function(req, res) {
-	res.render('explore/hashtag', {title: "hashtag", hashtag: req.params.hashtag});
+	res.render('explore/hashtag', {title: "hashtag", bodyclass: 'explore hashtag', hashtag: req.params.hashtag});
 });
 
 

@@ -1,9 +1,18 @@
 <%- include('partials/head'); %>
-
-<form action="/upload" method="post" enctype="multipart/form-data">
-	<input type="file" name="photo" />
-	<textarea name="caption" placeholder="caption"></textarea>
-	<input type="submit" />
-</form>
+<main>
+	<form class="photo upload" action="/upload" method="post" enctype="multipart/form-data">
+		<div>
+			<img id="upload_preview" src="../assets/img/placeholder.png" />
+			<input type="file" name="photo" />
+			<p id="upload_error"></p>
+		</div>
+		<div>
+			<input type="text" name="caption" placeholder="Een beschrijving toevoegen..." />
+			<input type="submit" value="Plaatsen" />
+		</div>
+	</form>
+	
+</main>
+<script src="/assets/client_js/upload.js"></script>
 
 <%- include('partials/foot'); %>
