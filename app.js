@@ -46,13 +46,16 @@ var indexRouter     = require('./routes/index.js'),
     exploreRouter   = require('./routes/explore.js'),
     uploadRouter	= require('./routes/upload.js'),
     userRouter		= require('./routes/user.js'),
-    ajaxRouter		= require('./routes/ajax.js');
+    ajaxRouter		= require('./routes/ajax.js'),
+    errorRouter		= require('./routes/error.js');
     
 app.use('/', indexRouter);
 app.use('/explore', exploreRouter);
 app.use('/upload', uploadRouter);
 app.use('/user', userRouter);
 app.use('/ajax', ajaxRouter);
+
+app.use(errorRouter);
 
 
 

@@ -1,12 +1,17 @@
 // Insert comment into DB
-function insertComment(photoid, comment) {
+function insertComment(photoid, userid, comment) {
 	var request = new XMLHttpRequest();
 	
 	request.open('POST', '/ajax/insert');
 	
+	if(!userid) {
+		userid = null;
+	}
+	
 	var data = {
 		photoid: photoid,
-		comment: comment
+		comment: comment,
+		userid: userid
 	}
 	
 	var photo = document.querySelector('[data-photoid="' + photoid + '"]');
@@ -18,9 +23,15 @@ function insertComment(photoid, comment) {
 	
 	request.addEventListener('load', function(){
 		var comments = JSON.parse(this.responseText);
-
+		
+		commentsList.innerHTML = '';
+		
 		for(i = 0; i < comments.length; i++) {
-			commentsList.innerHTML += '<li><a href="/explore/user/' + comments[i].username + '">' + comments[i].username + '</a> ' + comments[i].comment + '</li>';
+			if(!comments[i].username){
+				commentsList.innerHTML += '<li class="no_acc">' + comments[i].comment + '</li>';
+			} else {
+				commentsList.innerHTML += '<li><a href="/explore/user/' + comments[i].username + '">' + comments[i].username + '</a> ' + comments[i].comment + '</li>';
+			}
 		}
 	});
 }
@@ -31,7 +42,7 @@ for(i = 0; i < forms.length; i++) {
 	forms[i].addEventListener('submit', function(e){
 		e.preventDefault();
 		
-		insertComment(this.querySelector('input[type=hidden]').value, this.querySelector('input[type=text]').value);
+		insertComment(this.querySelectorAll('input[type=hidden]')[0].value, this.querySelectorAll('input[type=hidden]')[1].value, this.querySelector('input[type=text]').value);
 		
 		this.querySelector('input[type=text]').value = '';
 		

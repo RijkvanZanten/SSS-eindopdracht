@@ -95,7 +95,18 @@ em {
 	border: 1px solid #333;
 }
 
+.no_acc {
+	opacity: .7;
+	font-style: italic;
+	text-indent: 1rem;
+}
+
 /* ------------------------------------------ */
+
+
+
+/* Main styles
+--------------------------------------------- */
 
 body { 
 	background-color: #fafafa;
@@ -186,11 +197,26 @@ body > main {
 	font-size: 1rem;
 	font-family: 'Source Sans Pro', sans-serif;
 	width: 100%;
+	background-color: transparent;
 }
 
 .photo form input[type=text]:focus {
 	outline: 0;
 }
+
+#shrug {
+	font-size: 2rem;
+	display: block;
+	position: relative;
+	margin: 40% auto;
+	color: #edeeee;
+}
+/* ------------------------------------------ */
+
+
+
+/* Page specific styles
+--------------------------------------------- */
 
 .upload div {
 	width: 100%;
@@ -272,7 +298,7 @@ body > main {
 	margin-top: 1rem;
 }
 
-.login main > div input {
+.account main > div input {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -286,26 +312,139 @@ body > main {
 	padding: 1rem;
 }
 
-.login main > div input[type="submit"] {
+.account main > div input[type="submit"] {
 	border-color: #00477c;
 	background-color: transparent;
 	color: #00477c;
 	cursor: pointer;
 }
 
-.login main > div p {
+.account main > div p {
 	text-align: center;
+	margin-bottom: 1rem;
+}
+
+@-webkit-keyframes shake {
+	0% {left: 0}
+	25% {left: 1rem}
+	50% {left: -1rem}
+	75% {left: 1rem}
+	100% {left: 0}
+}
+
+.account.error main div {
+	position: relative;
+	-webkit-animation: shake .3s linear;
 }
 
 @media screen and (min-width: 600px) {
-	.login main > div:first-child {
+	.account main > div:first-child {
 		margin-top: 4rem;
 	}
 	
-	.login main > div {
+	.account main > div {
 		margin-bottom: 2rem;
 		border-radius: 5px;
 		border: 1px solid #edeeee;
 		background-color: white;
 	}
 }
+
+.account.create main > div form > div {
+	width: 96%;
+	margin: 1rem auto;
+	display: flex;
+}
+
+.account.create main > div form > div textarea {
+	flex-grow: 1;
+	margin-left: 1rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: white;
+	border: 1px solid #edeeee;
+	border-radius: 3px;
+	font-size: 1rem;
+	padding: 1rem;
+}
+
+#profile_pic {
+	overflow: hidden;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	position: relative;
+}
+
+#profile_pic img {
+	width: 100%;
+}
+
+#profile_pic input {
+	position: absolute;
+	top: -1rem;
+	left: 0;
+	bottom: 0;
+	font-size: 2rem;
+	width: 100%;
+	height: 100%;
+	background-color: red;
+	opacity: 0;
+	cursor: pointer;
+}
+
+
+.user > main > header {
+	padding: 1rem;
+	display: flex;
+	align-items: center;
+	margin: 1rem auto;
+}
+
+@media screen and (min-width: 600px) {
+	.user > main > header {
+		padding: 1rem 0;
+	}
+}
+
+.user > main > header img {
+	border-radius: 50%;
+	border: 2px solid #edeeee;
+	width: 20%;
+	margin-right: 1rem;
+	flex-shrink: 0;
+}
+
+.user > main > header h1 {
+	font-size: 1.5rem;
+	font-weight: 200;
+}
+
+.user > main > header p {
+	font-size: .9rem;
+	color: #6b6161;
+}
+
+.user > main > header .name {
+	color: #4b4f54;
+	font-weight: 600;
+}
+
+.user > main > main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.user > main > main > img {
+	flex-shrink: 0;
+	flex-basis: 30%;
+	width: 30%;
+	height: auto;
+	margin-bottom: 2rem;
+}
+
+
+/* ------------------------------------------ */

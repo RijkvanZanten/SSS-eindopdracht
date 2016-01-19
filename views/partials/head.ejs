@@ -13,7 +13,12 @@
 				<a href="http://192.168.56.101:3000"><img src="http://192.168.56.101:3000/assets/img/logo.svg" alt="logo" /></a>
 				<nav>
 					<ul>
-						<li><a href="http://192.168.56.101:3000/user/login">Login</a></li>
+						
+					<% if(!username) { %>
+						<li><a href="http://192.168.56.101:3000/user/login">Login</a></li>	
+					<% } else { %>
+						<li><a href="http://192.168.56.101:3000/explore/user/<%= username %>"><%= username %></a></li>
+					<% } %>
 						<li><a href="http://192.168.56.101:3000/upload">Plaatsen</a></li>
 					</ul>
 				</nav>

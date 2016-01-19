@@ -16,22 +16,30 @@
 %>
 	<article class="photo" data-photoid="<%= photos[i].id %>">
 		<header>
-			<img src="/usermedia/profilepics/<%= photos[i].profpic %>" alt="<%= photos[i].username %>" />
+			<img src="/usermedia/profilepics/<%= photos[i].username %>" alt="<%= photos[i].username %>" />
 			<p><a href="/explore/user/<%= photos[i].username %>">@<%= photos[i].username %></a></p>
 		</header>
 		<main>
 			<img src="/usermedia/photos/<%= year %>/<%= month %>/<%= photos[i].filename %>" alt="<%= photos[i].filename %>" />
 		</main>
 		<footer>
+		<% if(photos[i].caption.length > 0) { %>
 			<p class="caption"><a href="/explore/user/<%= photos[i].username %>"><%= photos[i].username %></a> <%= photos[i].caption %></p>
+		<% } %>
 			<ul class="comments">
-			<% for(x = 0; x < photos[i].comments.length; x++) { %>
-				<li><a href="/explore/user/<%= photos[i].comments[x].username; %>"><%= photos[i].comments[x].username; %></a> <%= photos[i].comments[x].comment; %></li>
+			<% for(x = 0; x < photos[i].comments.length; x++) { 
+				if(!photos[i].comments[x].username) { %>
+					<li class="no_acc"><%= photos[i].comments[x].comment; %></li>					
+				<% } else { %>
+					<li><a href="/explore/user/<%= photos[i].comments[x].username; %>"><%= photos[i].comments[x].username; %></a> <%= photos[i].comments[x].comment; %></li>
+				<% } %>
+				
 			<% } %>
 			</ul>
 			<form name="commentForm">
 				<input type="hidden" name="photoid" value="<%= photos[i].id %>" />
-				<input type="text" name="comment" maxlength="140" placeholder="Comment plaatsen..." />
+				<input type="hidden" name="userid" value="<%= userid %>" />
+				<input type="text" name="comment" maxlength="140" placeholder="Reactie plaatsen..." />
 			</form>
 		</footer>
 	</article>

@@ -3,28 +3,23 @@ var express = require('express'),
 	multer	= require('multer'),
 	upload  = multer({dest: 'public/usermedia/photos'}),
 	path	= require('path'),
-	fs		= require('fs');
+	fs		= require('fs'),
+	mw		= require('../middleware');
 	
 
-
-// ------------------------------------------------------------
-// GET
 // Show the upload form to users 
 // ------------------------------------------------------------
 
-router.get('/', function(req, res) {
-	res.render('upload', {title: 'Upload photo', bodyclass: 'uploadphoto'});
+router.get('/', mw.auth, function(req, res) {
+	res.render('upload', {title: 'Upload photo', bodyclass: 'uploadphoto', username: req.session.username, userid: req.session.userid});
 });
 
 
 
-// ------------------------------------------------------------
-// POST
-// New image to usermedia dir and insert record into DB
+// Post photo
 // ------------------------------------------------------------
 
 // Middleware functions
-// ------------------------------------------------------------
 
 var uploadFile = upload.single('photo');
 
@@ -115,7 +110,7 @@ function insertData(req, res, next) {
 				};
 				next();
 			} else {
-				connection.query('INSERT INTO photos (filename, userID, caption, date) VALUES (?, ?, ?, NOW() );', [req.file.originalname, 1, req.body.caption], function(error, result) {
+				connection.query('INSERT INTO photos (filename, userID, caption, date) VALUES (?, ?, ?, NOW() );', [req.file.originalname, req.body.userid, req.body.caption], function(error, result) {
 					if(error) {
 						req.error = {
 							code: 6,
