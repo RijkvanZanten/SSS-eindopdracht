@@ -1,10 +1,15 @@
-// Require the dependencies
+// Socket.io
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+	// de requires helaas hier vanwege het gebruik van het app object// Require the dependencies
 // --------------------------------------------------------------------
 var express 	 = require('express'),
 	session		 = require('express-session'),
 	myConnection = require('express-myconnection'),
 	mysql 		 = require('mysql'),
-	bodyParser   = require('body-parser');
+	bodyParser   = require('body-parser'),
+	socket		 = require('socket.io'),
+	http 		 = require('http');
 
 
 
@@ -40,7 +45,14 @@ app.use(myConnection(mysql, {
 	database: 'eindopdracht'
 }, 'single'));
 
+// Socket.IO
+var server = http.Server(app);
+var io = socket(server);
 
+app.use(function(req, res, next) {
+	req.io = io;
+	next();
+});
 
 // Routes & Routers
 // --------------------------------------------------------------------
@@ -60,8 +72,16 @@ app.use(errorRouter);
 
 
 
+// Realtime gekkigheid (comments)
+// --------------------------------------------------------------------
+io.on('connection', function (socket) {
+	socket.on('new comment', function (data) {
+		socket.broadcast.emit('comment', data);
+	});
+});
+
 // Start server
 // --------------------------------------------------------------------
-app.listen(3000, function() {
+server.listen(3000, function() {
 	console.log('App started. Listening on default port (3000)');
 });

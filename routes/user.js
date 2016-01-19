@@ -21,7 +21,7 @@ function auth(req, res, next) {
 // ------------------------------------------------------------
 
 router.get('/login', auth, function(req, res) {
-	res.render('user/login', {title: 'login', bodyclass: 'account login', username: req.session.username});
+	res.render('user/login', {title: 'login', bodyclass: 'account login', username: req.session.username, err: false});
 });
 
 // ------------------------------------------------------------
@@ -33,7 +33,7 @@ router.get('/login', auth, function(req, res) {
 
 router.post('/login', function(req, res) {
 	if(req.body.username == '' || req.body.password == ''){
-		res.render('user/login', {title: 'login', bodyclass: 'account error login', username: req.session.username});
+		res.render('user/login', {title: 'login', bodyclass: 'account error login', username: req.session.username, err: 1});
 	} else {
 		req.getConnection(function(error, connection) {
 			if(error){
@@ -57,15 +57,15 @@ router.post('/login', function(req, res) {
 				if(records.length != 0) {
 					bcrypt.compare(req.body.password, records[0].password, function(error, result){
 						if(result) {
-							req.session.userid= records[0].id;
+							req.session.userid = records[0].id;
 							req.session.username = records[0].username;
 							res.redirect('/');
 						} else {
-							res.render('user/login', {title: 'login', bodyclass: 'account error login', username: req.session.username});
+							res.render('user/login', {title: 'login', bodyclass: 'account error login', username: req.session.username, err: 3});
 						}
 					});
 				} else {
-					res.render('user/login', {title: 'login', bodyclass: 'account error login', username: req.session.username});
+					res.render('user/login', {title: 'login', bodyclass: 'account error login', username: req.session.username, err: 2});
 				}
 				
 			});
@@ -81,7 +81,7 @@ router.post('/login', function(req, res) {
 // ------------------------------------------------------------
 
 router.get('/create', auth, function(req, res) {
-	res.render('user/create', {title: 'Registreer account • SSS', bodyclass: 'account create', username: req.session.username});
+	res.render('user/create', {title: 'Registreer account • SSS', bodyclass: 'account create', username: req.session.username, err:false});
 });
 
 // ------------------------------------------------------------
@@ -94,12 +94,12 @@ router.get('/create', auth, function(req, res) {
 
 function checkEntry(req, res, next) {
 	if(!req.body.username || !req.body.name || !req.body.password) {
-		res.render('user/create', {title: 'Registreer account • SSS', bodyclass: 'account error create', username: req.session.username});
+		res.render('user/create', {title: 'Registreer account • SSS', bodyclass: 'account error create', username: req.session.username, err: 4});
 	} else {
 		if(req.body.password == req.body.passwordtwee) {
 			next();			
 		} else {
-		res.render('user/create', {title: 'Registreer account • SSS', bodyclass: 'account error create', username: req.session.username});
+		res.render('user/create', {title: 'Registreer account • SSS', bodyclass: 'account error create', username: req.session.username, err: 5});
 		}
 	}
 }

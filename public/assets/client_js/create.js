@@ -16,6 +16,8 @@ function showImage(input) {
 	}
 }
 
-document.querySelector('input[name="profile_pic"]').addEventListener('change', function(){
-	showImage(this);
-});
+if(document.querySelector('input[name="profile_pic"]')) {
+	document.querySelector('input[name="profile_pic"]').addEventListener('change', function(){
+		showImage(this);
+	});
+}

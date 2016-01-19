@@ -1,11 +1,31 @@
 <%- include('../partials/head') %>
 	<main>
 		<div>
+			<% if(err) {
+				switch(err){
+					case 1: %>
+					<p>Gebruikersnaam of wachtwoord niet ingevuld.</p>
+			<% 		break;
+					case 2: %>
+					<p>Gebruikersnaam al in gebruik.</p>
+			<%		break;
+					case 3: %>
+					<p>Gebruikersnaam of wachtwoord incorrect.</p>
+			<%		break;
+					case 4: %>
+					<p>Verplichte velden niet ingevuld.</p>
+			<%		break;
+					case 5: %>
+					<p>Wachtwoorden komen niet overeen.</p>
+			<%		break;
+				}
+			}
+			%>
 			<form action="create" method="POST" enctype="multipart/form-data">
-				<input type="text" name="name" placeholder="Volledige naam" />
-				<input type="text" name="username" placeholder="Gebruikersnaam" />
-				<input type="password" name="password" placeholder="Wachtwoord" />
-				<input type="password" name="passwordtwee" placeholder="Wachtwoord nogmaals" />
+				<input type="text" name="name" placeholder="Volledige naam*" />
+				<input type="text" name="username" placeholder="Gebruikersnaam*" />
+				<input type="password" name="password" placeholder="Wachtwoord*" />
+				<input type="password" name="passwordtwee" placeholder="Wachtwoord nogmaals*" />
 				<div>
 					<div id="profile_pic">
 						<img id="profile_pic_preview" src="/assets/img/placeholder.png" />

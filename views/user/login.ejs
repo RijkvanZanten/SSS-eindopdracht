@@ -1,6 +1,26 @@
 <%- include('../partials/head') %>
 	<main>
 		<div>
+			<% if(err) {
+				switch(err){
+					case 1: %>
+					<p>Gebruikersnaam of wachtwoord niet ingevuld.</p>
+			<% 		break;
+					case 2: %>
+					<p>Gebruikersnaam al in gebruik.</p>
+			<%		break;
+					case 3: %>
+					<p>Gebruikersnaam of wachtwoord incorrect.</p>
+			<%		break;
+					case 4: %>
+					<p>Verplichte velden niet ingevuld.</p>
+			<%		break;
+					case 5: %>
+					<p>Wachtwoorden komen niet overeen.</p>
+			<%		break;
+				}
+			}
+			%>
 			<form action="login" method="POST">
 				<input type="text" name="username" placeholder="Gebruikersnaam" />
 				<input type="password" name="password" placeholder="Wachtwoord" />

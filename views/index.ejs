@@ -39,6 +39,7 @@
 			<form name="commentForm">
 				<input type="hidden" name="photoid" value="<%= photos[i].id %>" />
 				<input type="hidden" name="userid" value="<%= userid %>" />
+				<input type="hidden" name="username" value="<%= username %>" />
 				<input type="text" name="comment" maxlength="140" placeholder="Reactie plaatsen..." />
 			</form>
 		</footer>
@@ -47,6 +48,7 @@
 
 </main>
 
+<script src="/socket.io/socket.io.js"></script>
 <script src="../assets/client_js/index.js"></script>
 
 <%- include('partials/foot.ejs'); %>

@@ -1,7 +1,6 @@
 var express = require('express'),
 	router = express.Router()
 
-
 function getPhotos(req, res, next) {
 	req.getConnection(function(error, connection) {
 		if(error) {

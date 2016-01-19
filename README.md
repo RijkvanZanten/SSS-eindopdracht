@@ -1,5 +1,8 @@
 # Serverside Scripting Eindopdracht
 
+# Belangrijk
+Wees nou niet zo dom om het letterlijk over te nemen. Ik gebruik een andere database, dus hij is sws stuk.
+
 ## Opdracht
 
 > Maak een foto-deel-applicatie met Node.js waar je op kunt inloggen en foto’s kunt uploaden als je ingelogd bent. Andere gebruikers die niet hoeven in te loggen moeten commentaar bij een foto kunnen plaatsen.
@@ -17,4 +20,5 @@ Download de applicatie en installeer met `npm install`. Voor meer informatie ove
 - Express-session
 - Multer
 - Mysql
+- bcrypt-nodejs
 
