@@ -1,8 +1,31 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><%= pagetitle %></title>
+		<title><%= title %></title>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="/style.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/assets/styles.css" />
 	</head>
 	<body class="<%= bodyclass %>">
+		<header>
+			<div>
+				<a href="http://192.168.56.101:3000"><img src="http://192.168.56.101:3000/assets/img/logo.svg" alt="logo" /></a>
+				<nav>
+					<ul>
+						
+					<% if(!username) { %>
+						<li><a href="http://192.168.56.101:3000/user/login">Login</a></li>	
+					<% } else { %>
+						<li>
+							<a href="http://192.168.56.101:3000/explore/user/<%= username %>"><%= username %></a>
+							<ul>
+								<li><a href="http://192.168.56.101:3000/user/logout">Afmelden</a></li>
+							</ul>
+						</li>
+					<% } %>
+						<li><a href="http://192.168.56.101:3000/upload">Plaatsen</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>

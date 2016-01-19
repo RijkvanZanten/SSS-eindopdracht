@@ -1,27 +1,21 @@
 {
-  "name": "sss-exercises4",
-  "version": "0.0.1",
-  "description": "Exercise 4 for server-side scripting in node.js course",
-  "private": true,
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "name": "eindopdracht-rijkvanzanten",
+  "version": "1.0.0",
+  "description": "De SSS eindopdracht van Rijk. Feestje.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Rijk van Zanten",
+  "license": "ISC",
   "dependencies": {
-    "express": "~4.9.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
     "ejs": "^2.3.4",
-    "express-session": "~1.9.3",
-    "body-parser": "latest"
-  },
-  "devDependencies": {},
-  "scripts": {},
-  "keywords": [
-    "exercise1",
-    "serverside",
-    "scripting",
-    "nodejs",
-    "course"
-  ],
-  "author": "",
-  "license": "MIT"
+    "express": "^4.13.3",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.12.1",
+    "multer": "^1.1.0",
+    "mysql": "^2.10.0"
+  }
 }

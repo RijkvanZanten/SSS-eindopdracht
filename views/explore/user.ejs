@@ -1,0 +1,46 @@
+<%- include('../partials/head.ejs') %>
+<main>
+
+	<% if(user.id == userid) { %>
+		<form class="hide" method="POST" action="/user/update" enctype="multipart/form-data">
+			<div>
+				<img src="/assets/img/placeholder.png" id="profile_pic_preview" alt="<%= user.username %>" />
+				<input type="file" name="profile_pic" />
+			</div>
+			<div>
+				<h1><%= user.username %></h1>
+				<input type="hidden" name="username" value="<%= user.username %>" />
+				<p><input type="text" value="<%= user.name %>" name="name" /><br />
+				<input type="text" name="bio" value="<%= user.bio %>" /></p>
+			</div>
+			<input type="submit" value="Klaar" />
+		</form>
+	<% } %>
+	<header>
+		<img src="/usermedia/profilepics/<%= user.username %>" alt="<%= user.username %>" />
+		<div>
+			<h1><%= user.username %></h1>
+			<p><span class="name"><%= user.name %></span><br /><span class="bio"><%= user.bio %></span></p>
+		</div>
+		<% if(user.id == userid) { %>
+			<button id="edit_profile">Profiel aanpassen</button>
+		<% } %>
+	</header>
+	<main>
+		<% for (i = 0; i < photos.length; i++) { 
+			var year = photos[i].date.getFullYear();
+			var month = photos[i].date.getMonth() + 1;
+			
+			if(month < 10) {
+				month = '0' + month;
+			} else {
+				month = month.toString();
+			}
+		%>
+			<img src="/usermedia/photos/<%= year %>/<%= month %>/<%= photos[i].filename %>" />
+		<% } %>
+	</main>
+</main>
+<script src="/assets/client_js/user.js"></script>
+<script src="/assets/client_js/create.js"></script>
+<%- include('../partials/foot.ejs') %>
