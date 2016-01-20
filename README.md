@@ -3,6 +3,8 @@
 # Belangrijk
 Wees nou niet zo dom om het letterlijk over te nemen. Ik gebruik een andere database, dus hij is sws stuk.
 
+Live: [http://rijks.website:3000](rijks.website:3000)
+
 ## Opdracht
 
 > Maak een foto-deel-applicatie met Node.js waar je op kunt inloggen en foto’s kunt uploaden als je ingelogd bent. Andere gebruikers die niet hoeven in te loggen moeten commentaar bij een foto kunnen plaatsen.
