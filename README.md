@@ -3,7 +3,7 @@
 # Belangrijk
 Wees nou niet zo dom om het letterlijk over te nemen. Ik gebruik een andere database, dus hij is sws stuk.
 
-Live: [http://rijks.website:3000](rijks.website:3000)
+Live: [http://rijks.website:3100](rijks.website:3100)
 
 ## Opdracht
 
