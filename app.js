@@ -1,7 +1,4 @@
-// Socket.io
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-	// de requires helaas hier vanwege het gebruik van het app object// Require the dependencies
+// Require dependencies
 // --------------------------------------------------------------------
 var express 	 = require('express'),
 	session		 = require('express-session'),
@@ -62,7 +59,7 @@ var indexRouter     = require('./routes/index.js'),
     userRouter		= require('./routes/user.js'),
     ajaxRouter		= require('./routes/ajax.js'),
     errorRouter		= require('./routes/error.js');
-    
+
 app.use('/', indexRouter);
 app.use('/explore', exploreRouter);
 app.use('/upload', uploadRouter);
